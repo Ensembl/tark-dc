@@ -38,7 +38,7 @@ pytest
 
 ## Stable ID and version matching unique sequence checksums
 
-Module: `tests/test_versioning.py`
-Test: `test_ver_asm_seq_conflicts`
+- Module: `tests/test_versioning.py`
+- Test: `test_ver_asm_seq_conflicts`
 
 The purpose of this test is to ensure that sequences that are matched to a given stable_id and version number and assembly number are unique. The reason the assembly number has also been included is that there are some stable ID - Version numbers that are the same between releases, but there is a minor change in the respective sequences.
