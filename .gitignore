@@ -1,0 +1,15 @@
+.python-version
+*.pyc
+env
+env/*
+*~
+*.DS_Store
+*_build*
+.eggs*
+*.egg-info*
+.cache
+.pytest_cache
+*__pycache__
+tmp
+tmp/*
+crd.json
