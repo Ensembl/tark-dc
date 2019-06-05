@@ -36,15 +36,30 @@ pytest
 
 # Tests
 
-## Stable ID and version matching unique sequence checksums
+## pytest mark: versioning
+
+Alll the following tests can be run with the following command:
+
+```
+pytest -m versioning
+```
+
+### Stable ID and version matching unique sequence checksums
 
 - Module: `tests/test_versioning.py`
 - Test: `test_ver_asm_seq_conflicts`
 
 The purpose of this test is to ensure that sequences that are matched to a given stable_id and version number and assembly number are unique. The reason the assembly number has also been included is that there are some stable ID - Version numbers that are the same between releases, but there is a minor change in the respective sequences.
 
+## pytest mark: stats
 
-## Feature count consistency
+Alll the following tests can be run with the following command:
+
+```
+pytest -m stats
+```
+
+### Feature count consistency
 
 - Module: `tests/test_stats.py`
 - Test: `test_load_stats`
