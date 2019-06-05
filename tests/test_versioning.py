@@ -16,6 +16,7 @@ from __future__ import print_function
 
 import pytest
 
+
 @pytest.mark.versioning
 def test_ver_asm_seq_conflicts(cursor):
     """
@@ -27,7 +28,7 @@ def test_ver_asm_seq_conflicts(cursor):
     checked easily here as well.
 
     .. code-block:: none
-       pytest tests/test_data.py
+       pytest -m versioning
     """
     sql = """
         SELECT

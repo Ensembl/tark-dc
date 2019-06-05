@@ -24,43 +24,46 @@ def test_load_stats(cursor):
     Test to ensure that the logged numbers for the genes and transcripts within
     a release match between those loaded, those stated to be loaded and those
     described as being present in the original database
+
+    .. code-block:: none
+       pytest -m stats
     """
     sql = """
         SELECT
-            release_set.description,
-            release_set.shortname,
-            gene_set.gene_count,
-            transcript_set.transcript_count,
-            release_stats.json
+            rst.description,
+            rst.shortname,
+            gs.gene_count,
+            ts.transcript_count,
+            rss.json
         FROM
-            release_set
-            JOIN release_stats ON (
-                release_set.release_id=release_stats.release_id
+            release_set AS rst
+            JOIN release_stats AS rss ON (
+                rst.release_id=rss.release_id
             )
             JOIN (
                 SELECT
-                    release_set.release_id,
+                    rs.release_id,
                     COUNT(feature_id) AS gene_count
                 FROM
-                    release_set
-                    JOIN gene_release_tag ON (
-                        release_set.release_id=gene_release_tag.release_id
+                    release_set AS rs
+                    JOIN gene_release_tag AS grt ON (
+                        rs.release_id=grt.release_id
                     )
                 GROUP BY
-                    release_set.release_id
-            ) AS gene_set ON release_set.release_id=gene_set.release_id
+                    rs.release_id
+            ) AS gs ON rst.release_id=gs.release_id
             JOIN (
                 SELECT
-                    release_set.release_id,
+                    rs.release_id,
                     COUNT(feature_id) AS transcript_count
                 FROM
-                    release_set
-                    JOIN transcript_release_tag ON (
-                        release_set.release_id=transcript_release_tag.release_id
+                    release_set AS rs
+                    JOIN transcript_release_tag AS trt ON (
+                        rs.release_id=trt.release_id
                     )
                 GROUP BY
-                    release_set.release_id
-            ) AS transcript_set ON release_set.release_id=transcript_set.release_id;
+                    rs.release_id
+            ) AS ts ON rst.release_id=ts.release_id;
     """
     cursor.execute(sql)
     results = cursor.fetchall()
