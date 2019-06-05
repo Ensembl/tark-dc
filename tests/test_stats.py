@@ -71,7 +71,7 @@ def test_load_stats(cursor):
         json_blob = json.loads(release[4])
         assert release[2] == json_blob['gene']['core']
         assert release[2] == json_blob['gene']['tark_release']
-        if release[0] == "Ensembl release " and release[1] == '75':
+        if release[0] == "Ensembl release" and release[1] == '75':
             continue
         assert release[3] == json_blob['transcript']['core']
         assert release[3] == json_blob['transcript']['tark_release']
