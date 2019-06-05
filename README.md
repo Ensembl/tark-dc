@@ -42,3 +42,11 @@ pytest
 - Test: `test_ver_asm_seq_conflicts`
 
 The purpose of this test is to ensure that sequences that are matched to a given stable_id and version number and assembly number are unique. The reason the assembly number has also been included is that there are some stable ID - Version numbers that are the same between releases, but there is a minor change in the respective sequences.
+
+
+## Feature count consistency
+
+- Module: `tests/test_stats.py`
+- Test: `test_load_stats`
+
+Once each release for a source has been loaded into the Tark db the pipeline should leave a record of the number of features that it has loaded along with a count of the number of features that are present in the source. This test ensures that the number of features that are reported match those that are present within the db for a given release.

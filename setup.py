@@ -18,7 +18,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='tark_hc',
+    name='tark_dc',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[

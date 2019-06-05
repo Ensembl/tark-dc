@@ -14,7 +14,9 @@
 
 from __future__ import print_function
 
+import pytest
 
+@pytest.mark.versioning
 def test_ver_asm_seq_conflicts(cursor):
     """
     Test case to ensure that there are no clashes between any releases where
